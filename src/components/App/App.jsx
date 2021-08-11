@@ -1,10 +1,15 @@
-import React from 'react'
+import HeadAppBar from 'components/AppBar/HeadAppBar';
+import MainContainer from 'components/Container/MainContainer';
+import { HomeView } from 'views/HomeView';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <>
+    <MainContainer>
+      <HeadAppBar />
+      </MainContainer>
+      <HomeView/>
+    </>
   )
 }
 
