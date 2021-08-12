@@ -1,16 +1,25 @@
-import HeadAppBar from 'components/AppBar/HeadAppBar';
-import MainContainer from 'components/Container/MainContainer';
-import { HomeView } from 'views/HomeView';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Form from '../Form/Form';
+import { Container, TitleMain, TitleBook, } from './App.styled.js'
+import ContactsList from '../ContactsList/ContactsList';
+import Filter from '../Filter/Filter';
+import { getContacts} from 'redux/contacts/contacts-operations';
 
-function App() {
+export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getContacts())
+  }, [dispatch])
+
   return (
-    <>
-    <MainContainer>
-      <HeadAppBar />
-      </MainContainer>
-      <HomeView/>
-    </>
+    <Container>
+      <TitleMain>Phonebook</TitleMain>
+      <Form />
+      <TitleBook>Contacts</TitleBook>
+      <Filter />
+      <ContactsList />
+    </Container>
   )
-}
-
-export default App
+};
