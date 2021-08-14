@@ -9,14 +9,17 @@ const ContactsList = () => {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
 
-    return (
-        <List>
+  return (
+    <>
+      <h1>Contacts</h1>
+      <List>
             {contacts.length > 0 && contacts.map(({ id, name, number }) => (
                 <Item key={id} >{name}: {number}
                     <ButtonDel type="button" onClick={()=>dispatch(deleteContact(id))}>Delete</ButtonDel>
                 </Item>
             ))}
-        </List>
+      </List>
+      </>
     )
 }
 
