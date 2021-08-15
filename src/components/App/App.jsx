@@ -1,8 +1,10 @@
-import {lazy, Suspense} from 'react'
+import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import NotFoundPage from 'views/NotFoundPage';
 import HeadAppBar from 'components/AppBar/HeadAppBar';
+import { fetchCurrentUser } from 'redux/auth/auth-operations';
 
 const HomeView = lazy(() => import('../../views/HomeView' /* webpackChunkName: 'HomePage' */));
 const RegisterView = lazy(() => import('../../views/RegisterView' /* webpackChunkName: 'RegisterView' */));
@@ -11,10 +13,15 @@ const ContactsView = lazy(() => import('../../views/ContactsView' /* webpackChun
 
 const myContainer = {
   marginTop: '120px',
-background: 'radial-gradient(circle, rgba(63,139,251,1) 0%, rgba(70,70,252,1) 65%)',
+// background: 'radial-gradient(circle, rgba(63,139,251,1) 0%, rgba(70,70,252,1) 65%)',
 }
 export default function App() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchCurrentUser())
+  }, [dispatch]);
+  
   return (
     <>
       <HeadAppBar />
