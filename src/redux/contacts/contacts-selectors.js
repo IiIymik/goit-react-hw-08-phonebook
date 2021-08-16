@@ -9,8 +9,13 @@ export const getVisibleContacts = createSelector(
   (contacts, filter) => {
     const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter),
+    let isNum = /^\d+$/.test(normalizedFilter);
+
+    if (isNum) {
+      return contacts.filter(({ number }) => number.includes(normalizedFilter));
+    }
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(normalizedFilter),
     );
   },
 );

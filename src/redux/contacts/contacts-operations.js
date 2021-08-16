@@ -30,3 +30,13 @@ export const deleteContact = contactId => async dispatch => {
     .then(() => dispatch(contactsActions.deleteContactSuccess(contactId)))
     .catch(e => dispatch(contactsActions.deleteContactError(e)));
 };
+
+// export const updateContact = contactId => async dispatch => {
+//   dispatch(contactsActions.updateContactRequest());
+//   try {
+//     const { data } = axios.patch(`/contacts/${contactId}`);
+//     dispatch(contactsActions.updateContactSuccess);
+// } catch (error) {
+// dispatch(contactsActions.updateContactError(error));
+// }
+// }

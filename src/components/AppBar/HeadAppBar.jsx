@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { FaRegAddressBook } from 'react-icons/fa';
 import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
-import { getIsLoggedIn } from 'redux/auth/auth-selectors';
+import { getIsLoggedIn, getIsFetchingCurrent } from 'redux/auth/auth-selectors';
 import AuthNav from 'components/AuthNav';
 
 const cssHeader = {
@@ -17,8 +17,10 @@ const cssHeader = {
 
 export default function HeadAppBar() {
   const isLoggedIn = useSelector(getIsLoggedIn);
-  console.log("🚀 ~ file: HeadAppBar.jsx ~ line 19 ~ HeadAppBar ~ isLoggedIn", isLoggedIn)
-  return (
+  const isFetchingCurrent = useSelector(getIsFetchingCurrent);
+
+
+  return (!isFetchingCurrent &&
     <AppBar style={cssHeader}>
         <Toolbar>
         <Typography>
@@ -26,7 +28,7 @@ export default function HeadAppBar() {
         </Typography>
       </Toolbar>
       <Navigation />
-      
+
       {isLoggedIn ? <UserMenu/>  : <AuthNav/> }
     </AppBar>
   )

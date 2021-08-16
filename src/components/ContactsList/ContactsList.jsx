@@ -15,7 +15,8 @@ const ContactsList = () => {
       <List>
             {contacts.length > 0 && contacts.map(({ id, name, number }) => (
                 <Item key={id} >{name}: {number}
-                    <ButtonDel type="button" onClick={()=>dispatch(deleteContact(id))}>Delete</ButtonDel>
+                <ButtonDel type="button" onClick={() => dispatch(deleteContact(id))}>Delete</ButtonDel>
+                {/* <button type="button">Edit</button> */}
                 </Item>
             ))}
       </List>

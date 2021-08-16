@@ -1,10 +1,13 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import NotFoundPage from 'views/NotFoundPage';
 import HeadAppBar from 'components/AppBar/HeadAppBar';
 import { fetchCurrentUser } from 'redux/auth/auth-operations';
+import { getIsFetchingCurrent } from 'redux/auth/auth-selectors';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 
 const HomeView = lazy(() => import('../../views/HomeView' /* webpackChunkName: 'HomePage' */));
 const RegisterView = lazy(() => import('../../views/RegisterView' /* webpackChunkName: 'RegisterView' */));
@@ -17,35 +20,35 @@ const myContainer = {
 }
 export default function App() {
   const dispatch = useDispatch();
+  const isFetchingCurrent = useSelector(getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(fetchCurrentUser())
   }, [dispatch]);
-  
-  return (
-    <>
-      <HeadAppBar />
+
+  return ( !isFetchingCurrent && (
       <Container style={myContainer} >
+      <HeadAppBar />
+
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
-          <Route path="/" exact>
+          <PublicRoute path="/" exact>
             <HomeView/>
-          </Route>
-          <Route path="/register">
+          </PublicRoute>
+          <PublicRoute path="/register" restricted redirectTo='/contacts' >
             <RegisterView/>
-          </Route>
-          <Route path="/login">
+          </PublicRoute>
+          <PublicRoute path="/login" restricted redirectTo='/contacts' >
             <LoginView/>
-          </Route>
-          <Route path="/contacts">
+          </PublicRoute>
+          <PrivateRoute path="/contacts">
             <ContactsView/>
-          </Route>
+          </PrivateRoute>
           <Route>
             <NotFoundPage />
           </Route>
         </Switch>
         </Suspense>
         </Container>
-    </>
-  )
+  ))
 };

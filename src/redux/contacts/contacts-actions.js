@@ -22,3 +22,7 @@ export const deleteContactSuccess = createAction(
 export const deleteContactError = createAction('contacts/deleteContactError');
 //Add Filter value
 export const changeFilterValue = createAction('contacts/changeFilterValue');
+// Update contact
+// export const updateContactRequest = createAction('contacts/updateContactRequest');
+// export const updateContactSuccess = createAction('contacts/updateContactSuccess');
+// export const updateContactError = createAction('contacts/updateContactError');

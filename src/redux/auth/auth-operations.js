@@ -16,7 +16,6 @@ const token = {
 export const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
-    console.log(data);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -27,11 +26,10 @@ export const register = createAsyncThunk('auth/register', async credentials => {
 export const login = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
-    console.log('🚀 ~ file: auth-operations.jsx ~ line 19 ~ data', data);
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error);
+    console.dir(error);
   }
 });
 // logout user
@@ -46,27 +44,20 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
 // Refresh user
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
-  async (_, { getState, rejectWithValue }) => {
-    const state = getState();
-    console.log(
-      '🚀 ~ file: auth-operations.js ~ line 49 ~ fetchCurrentUser ~ state',
-      state,
-    );
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      return rejectWithValue();
+      return thunkAPI.rejectWithValue();
     }
 
     token.set(persistedToken);
     try {
-      const { data } = await axios.post('users/current');
+      const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      console.log(
-        '🚀 ~ file: auth-operations.js ~ line 57 ~ fetchCurrentUser ~ error',
-        error,
-      );
+      console.log('🚀 ~ file: auth-operations.js ~ line 63 ~ error', error);
     }
   },
 );
