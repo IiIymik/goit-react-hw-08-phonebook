@@ -5,6 +5,7 @@ import { deleteContact } from 'redux/contacts/contacts-operations';
 import { getVisibleContacts } from 'redux/contacts/contacts-selectors';
 import { useDispatch } from 'react-redux';
 
+
 const ContactsList = () => {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
@@ -25,3 +26,4 @@ const ContactsList = () => {
 }
 
 export default ContactsList
+

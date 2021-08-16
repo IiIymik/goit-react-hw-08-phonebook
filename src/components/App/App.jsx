@@ -16,8 +16,9 @@ const ContactsView = lazy(() => import('../../views/ContactsView' /* webpackChun
 
 const myContainer = {
   marginTop: '120px',
-// background: 'radial-gradient(circle, rgba(63,139,251,1) 0%, rgba(70,70,252,1) 65%)',
 }
+
+
 export default function App() {
   const dispatch = useDispatch();
   const isFetchingCurrent = useSelector(getIsFetchingCurrent);

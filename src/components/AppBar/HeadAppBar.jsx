@@ -8,11 +8,22 @@ import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
 import { getIsLoggedIn, getIsFetchingCurrent } from 'redux/auth/auth-selectors';
 import AuthNav from 'components/AuthNav';
+// import SvgIcon from '@material-ui/core/SvgIcon';
+import { ReactComponent as SvgLogoImg} from 'files/images/Vector.svg';
+
+// console.log(svgLogoImg);
 
 const cssHeader = {
   flexDirection: 'row',
   justifyContent: 'space-around',
   alignItems: 'center',
+  height: '80px'
+}
+
+const cssToolBar = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
 }
 
 export default function HeadAppBar() {
@@ -21,10 +32,11 @@ export default function HeadAppBar() {
 
 
   return (!isFetchingCurrent &&
-    <AppBar style={cssHeader}>
-        <Toolbar>
-        <Typography>
-          <FaRegAddressBook /> Phone Book
+    <AppBar style={cssHeader} color='light'>
+      <Toolbar style={cssToolBar} >
+        <SvgLogoImg height='40px' width='40px'/>
+        <Typography color='primary' variant="h5" align='center' style={{fontWeight:'900',fontSize: '20px',lineHeight: '24px'}}>
+          Phone Book
         </Typography>
       </Toolbar>
       <Navigation />
