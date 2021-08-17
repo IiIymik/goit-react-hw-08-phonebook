@@ -3,15 +3,12 @@ import { useSelector } from 'react-redux';
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { FaRegAddressBook } from 'react-icons/fa';
 import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
 import { getIsLoggedIn, getIsFetchingCurrent } from 'redux/auth/auth-selectors';
-import AuthNav from 'components/AuthNav';
-// import SvgIcon from '@material-ui/core/SvgIcon';
+import AuthNav from 'components/AuthNav/AuthNav';
 import { ReactComponent as SvgLogoImg} from 'files/images/Vector.svg';
 
-// console.log(svgLogoImg);
 
 const cssHeader = {
   flexDirection: 'row',
