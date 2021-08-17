@@ -1,34 +1,25 @@
-import styled from '@emotion/styled/macro';
+import css from '@emotion/styled/macro';
 
-export const FormEl = styled.form`
+export const FormEl = css.form`
   display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
 `;
 
-export const Input = styled.input`
-  margin-left: 5px;
-  margin-right: 5px;
-  line-height: 10px;
-  font-size: 16px;
-  &:focus {
-    outline: none;
-    border-color: blue;
-  }
-`;
-
-export const TitleInput = styled.h2``;
-
-export const Button = styled.button`
-  margin-left: 5px;
-  background-color: white;
-  color: green;
-  outline: none;
-  border: 1px dashed green;
-  padding: 3px;
-  &:hover,
-  :focus {
-    background-color: blue;
-    border: 1px dashed blue;
-    color: white;
-  }
+export const Button = css.button`
+color: #219653;
+background-color: #fff;
+padding: 10px 20px;
+font-weight: bold;
+font-size: 15px;
+line-height: 18px;
+border: 1px solid #219653;
+border-radius: 5px;
+:hover{
+  color: #fff;
+  background-color: rgba(230, 106, 63, 0.95);
+  border: 1px solid rgba(230, 106, 63, 0.95);
+  filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.4));
+}
 `;

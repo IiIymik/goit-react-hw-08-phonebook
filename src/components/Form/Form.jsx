@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
 import {getVisibleContacts} from 'redux/contacts/contacts-selectors';
 import nanoid from '../../utils/nanoid.js';
-import { FormEl, Input, TitleInput, Button, } from './Form.styled.js';
+import { FormEl, Button } from './Form.styled.js';
+import { TextField } from '@material-ui/core';
+
+
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -42,20 +45,20 @@ export default function Form() {
 
   return (
     <FormEl onSubmit={handleSubmit}>
-      <TitleInput>Name</TitleInput>
-      <Input
+      <TextField
         type="text"
-        name="name"
+        label="Name"
+        variant="outlined"
         value={name}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         onChange={(e) => setName(e.currentTarget.value)}
         title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         required
       />
-      <TitleInput>Number</TitleInput>
-      <Input
+      <TextField
         type="tel"
-        name="number"
+        variant="outlined"
+        label="Number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         onChange={(e) => setNumber(e.currentTarget.value)}
         value={number}

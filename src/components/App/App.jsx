@@ -8,6 +8,7 @@ import { fetchCurrentUser } from 'redux/auth/auth-operations';
 import { getIsFetchingCurrent } from 'redux/auth/auth-selectors';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
+import { ToastContainer } from 'react-toastify';
 
 const HomeView = lazy(() => import('../../views/HomeView' /* webpackChunkName: 'HomePage' */));
 const RegisterView = lazy(() => import('../../views/RegisterView' /* webpackChunkName: 'RegisterView' */));
@@ -61,7 +62,7 @@ export default function App() {
           </Route>
         </Switch>
       </Suspense>
-
+        <ToastContainer autoClose={3000} />
         </Container>
   ))
 };

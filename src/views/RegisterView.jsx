@@ -5,7 +5,7 @@ import { TextField } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import Notify from 'components/Notify/Notify';
 
 const styles = {
   container: {
@@ -30,8 +30,9 @@ const styles = {
       fontSize: '15px',
       lineHeight: '18px',
       border: '1px solid #219653',
-      borderRadius: '5px',
-  }
+    borderRadius: '5px',
+  },
+
 };
 
 
@@ -56,6 +57,12 @@ const RegisterView = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    const checkValue = name === '' || email === '' || password === '';
+
+    if (checkValue) {
+      return Notify();
+    }
     dispatch(register({ name, email, password }));
     setName('');
     setEmail('');
@@ -67,21 +74,21 @@ const RegisterView = () => {
       <form onSubmit={handleSubmit} autoComplete="off" style={styles.form}>
           <TextField
             type="text"
-          label="name"
+          label="Name"
             value={name}
             variant="outlined"
             onChange={handleChange}
           />
           <TextField
             type="email"
-            label="email"
+            label="Email"
             variant="outlined"
             value={email}
             onChange={handleChange}
           />
           <TextField
             type="password"
-            label="password"
+            label="Password"
             variant="outlined"
             value={password}
             onChange={handleChange}
