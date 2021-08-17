@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
@@ -15,7 +15,10 @@ const LoginView = lazy(() => import('../../views/LoginView' /* webpackChunkName:
 const ContactsView = lazy(() => import('../../views/ContactsView' /* webpackChunkName: 'ContactsView' */))
 
 const myContainer = {
+  display: 'flex',
   marginTop: '120px',
+  alignItems: 'center',
+  justifyContent: 'center',
 }
 
 
@@ -36,12 +39,20 @@ export default function App() {
           <PublicRoute path="/" exact>
             <HomeView/>
           </PublicRoute>
+
           <PublicRoute path="/register" restricted redirectTo='/contacts' >
             <RegisterView/>
-          </PublicRoute>
-          <PublicRoute path="/login" restricted redirectTo='/contacts' >
+            </PublicRoute>
+
+
+
+            <PublicRoute path="/login" restricted redirectTo='/contacts' >
             <LoginView/>
           </PublicRoute>
+
+
+
+
           <PrivateRoute path="/contacts">
             <ContactsView/>
           </PrivateRoute>
@@ -49,7 +60,8 @@ export default function App() {
             <NotFoundPage />
           </Route>
         </Switch>
-        </Suspense>
+      </Suspense>
+
         </Container>
   ))
 };

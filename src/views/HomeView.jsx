@@ -1,25 +1,25 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import BtnAuthNav from 'components/AuthNav/AuthNav';
 
 
-const textStyle = {
+const titleStyle = {
   fontWeight: '900',
-fontSize: '50px',
+  fontSize: '50px',
   lineHeight: '61px',
-color:'#fff'
+  color: '#fff',
+  marginBottom: '20px'
 }
-
-// const containerCSS = {
-//   position: 'absolute',
-//   backgroundImage: 'url("../files/images/backImgHero.png")',
-// }
 
  const HomeView = () => {
   return (
-    <Container>
-      <Typography variant="h3" style={textStyle}>Phone Book</Typography>
-      <img src={'../files/images/backImgHero.png' }alt='phone Img' width='400px' height='400px'/>
+    <Container >
+      <Typography variant='h3' style={titleStyle} align='center'>Phone Book</Typography>
+      <Typography variant='h6' align='center' color='secondary' style={{marginBottom:'10px'}}>
+        Here you can keep all your phone numbers
+      </Typography>
+      <BtnAuthNav />
     </Container>
   )
  }

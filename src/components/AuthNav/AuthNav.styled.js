@@ -2,6 +2,7 @@ import css from '@emotion/styled/macro';
 
 export const Container = css.div`
 display: flex;
+justify-content: center;
 gap: 5px;
 & a {
 color: #219653;

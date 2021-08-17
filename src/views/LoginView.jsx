@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/auth-operations';
+import { TextField } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+
+const containerCss = {
+  display: 'flex',
+  width: '600px',
+  padding: '20px',
+}
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -26,13 +35,13 @@ export default function LoginView() {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
+    <Paper elevation={3} style={containerCss}>
+      <Typography>Страница логина</Typography>
 
       <form onSubmit={handleSubmit} autoComplete="off">
         <label >
           Почта
-          <input
+          <TextField
             type="email"
             name="email"
             value={email}
@@ -42,7 +51,7 @@ export default function LoginView() {
 
         <label >
           Пароль
-          <input
+          <TextField
             type="password"
             name="password"
             value={password}
@@ -52,6 +61,6 @@ export default function LoginView() {
 
         <button type="submit">Войти</button>
       </form>
-    </div>
+    </Paper>
   )
 }
