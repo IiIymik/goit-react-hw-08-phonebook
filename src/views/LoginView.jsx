@@ -11,7 +11,7 @@ import Notify from 'components/Notify/Notify';
 
 const styles = {
   container: {
-      display: 'flex',
+  display: 'flex',
   width: '300px',
   padding: '20px',
   flexDirection: 'column',

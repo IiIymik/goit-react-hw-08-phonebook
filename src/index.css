@@ -70,3 +70,12 @@ a {
     background: transparent;
     margin-bottom: 30px;
 }
+
+#input-with-icon-textfield {
+    padding-top: 7px;
+}
+
+.MuiSvgIcon-root .makeStyles-icon-1:hover,
+.MuiSvgIcon-root .makeStyles-icon-1:focus {
+    color: #219653;
+}

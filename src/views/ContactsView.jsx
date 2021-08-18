@@ -14,13 +14,19 @@ const style = {
     display: 'flex',
     gap: '10px',
   },
-  card: {
+  card1: {
+    minWidth: '950px',
+    minHeight: '700px',
     padding: '20px',
   },
-  title: {
-    marginBottom: '20px'
+  card2: {
+    padding: '20px',
+    maxHeight: '275px'
+  },  
+  positionFilter: {
+    display: 'flex',
+    flexDirection: 'column',
   }
-
 }
 
 export default function ContactsView() {
@@ -30,13 +36,15 @@ export default function ContactsView() {
   return (
     <Container style={style.container}>
       {/* list contacts */}
-      <Paper elevation={3} style={style.card}>
-         <Typography variant='h6' color='primary' align='center' style={style.title}>My contacts</Typography>
-      <Filter />
+      <Paper elevation={3} style={style.card1}>
+      <div style={style.positionFilter}>
+        <Typography variant='h4' color='primary' align='center'   style={style.title}>My contacts</Typography>
+        <Filter />
+      </div>
       <ContactsList />
       </Paper>
     {/* add contacts */}
-      <Paper elevation={3} style={style.card}>
+      <Paper elevation={3} style={style.card2}>
         <Typography variant='h6' color='primary' align='center' style={style.title}>Add new contact</Typography>
       <Form />
       </Paper>

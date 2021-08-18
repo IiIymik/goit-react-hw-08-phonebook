@@ -12,8 +12,9 @@ import { ReactComponent as SvgLogoImg} from 'files/images/Vector.svg';
 
 
 const cssHeader = {
-  flexDirection: 'row',
-  justifyContent: 'space-around',
+  display: 'grid',
+  gridTemplateColumns: '2fr 1fr 2fr',
+  justifyContent: 'center',
   alignItems: 'center',
   height: '80px'
 }
@@ -22,6 +23,7 @@ const cssToolBar = {
   display: 'flex',
   alignItems: 'center',
   gap: '10px',
+  marginLeft: '350px'
 }
 
 export default function HeadAppBar({onClick}) {
@@ -34,7 +36,7 @@ export default function HeadAppBar({onClick}) {
         <Link to='/'>
       <Toolbar style={cssToolBar} >
         <SvgLogoImg height='40px' width='40px'/>
-        <Typography color='primary' variant="h5" align='center' style={{fontWeight:'900',fontSize: '20px',lineHeight: '24px'}}>
+          <Typography color='primary' variant="h5" align='center' style={{ fontWeight: '900', fontSize: '20px', lineHeight: '24px', }}>
           Phone Book
         </Typography>
         </Toolbar>

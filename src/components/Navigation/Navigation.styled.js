@@ -14,5 +14,5 @@ line-height: 18px;
   border: 1px solid rgba(230, 106, 63, 0.95);
   filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.4));
   border-radius: 5px;
-}
+}}
 `;

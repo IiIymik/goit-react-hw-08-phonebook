@@ -3,6 +3,7 @@ import css from '@emotion/styled/macro';
 export const Container = css.div`
 display: flex;
 align-items: center;
+margin-right: 350px;
 `;
 
 export const Img = css.img`
